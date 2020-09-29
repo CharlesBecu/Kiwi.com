@@ -20,12 +20,13 @@ $(function() {
         e.preventDefault();
         let mail = $('#smail').val();
         let pass = $('#spassword').val();
-        let next = connect(0, mail, pass);
+        let next = signin(mail, pass);
         if (next != 0) {
             bsModal('Be kept signed in ?', 'Would you like us to keep you signed in ? It will enable automatic connection when you will come back.', 'Yes', 'No', function() {
                 cookie(mail, pass);
                 window.open(next, "_self");
             }, function() {
+                session(mail, pass);
                 window.open(next, "_self");
             });
         } else {
@@ -36,12 +37,13 @@ $(function() {
         e.preventDefault();
         let mail = $('#lmail').val();
         let pass = $('#lpassword').val();
-        let next = connect(1, mail, pass);
+        let next = connect(mail, pass);
         if (next != 0) {
             bsModal('Be kept signed in ?', 'Would you like us to keep you signed in ? It will enable automatic connection when you will come back.', 'Yes', 'No', function() {
                 cookie(mail, pass);
                 window.open(next, "_self");
             }, function() {
+                session(mail, pass);
                 window.open(next, "_self");
             });
         } else {
@@ -50,63 +52,3 @@ $(function() {
     });
     bsAlert(`Test mode. Login always succeeds and sign in aways failS.`);
 });
-
-function connect(type, mail, pass) {
-    if (type) {
-
-    } else if (!type) {
-
-    }
-    return type;
-}
-
-function cookie(a, b) {
-    document.cookie = `mail=${a};`;
-    document.cookie = `password=${b};`;
-}
-
-function bsAlert(a = 'Error. Please Try again', duration = 5000) {
-    let txt = `
-    <div class="alert alert-danger fade show" role="alert">${a}</div>
-    `
-    let el = $(txt);
-    el.prependTo('body');
-    setTimeout(function() {
-        el.alert('close');
-    }, duration);
-}
-
-function bsModal(titre, corps, successbtn, failbtn, success, fail) {
-    let txt = `
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">${titre}</h5>
-                </div>
-                <div class="modal-body">${corps}</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"><span id="bs-Modal-Custom-Fail-Btn">${failbtn}</span></button>
-                    <button type="button" class="btn btn-primary bs-Modal-Custom-Success-Btn">${successbtn}</button>
-                </div>
-            </div>
-        </div>
-    </div>`;
-    $(txt).prependTo('body');
-    $('.modal').modal('show');
-    $('.modal').click(function(e) {
-        e.stopPropagation();
-        if ($(document.elementFromPoint(e.clientX, e.clientY)).hasClass('bs-Modal-Custom-Success-Btn')) {
-            $('.modal').on('hidden.bs.modal', success);
-            $('.modal').modal('hide');
-        } else if (
-            $(document.elementFromPoint(e.clientX, e.clientY)).hasClass('modal') ||
-            $(document.elementFromPoint(e.clientX, e.clientY)).hasClass('btn-secondary')
-        ) {
-            $('.modal').on('hidden.bs.modal', fail);
-            $('.modal').modal('hide');
-        }
-    });
-
-
-}
