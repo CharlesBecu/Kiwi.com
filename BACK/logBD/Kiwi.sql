@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  lun. 28 sep. 2020 à 18:00
+-- Généré le :  mar. 29 sep. 2020 à 16:32
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP :  7.3.6
 
@@ -33,9 +33,10 @@ CREATE TABLE `Ads` (
   `Titre` text NOT NULL,
   `Entreprise` text NOT NULL,
   `Lieu` text NOT NULL,
-  `Salaire` int(11) NOT NULL,
+  `Salaire` int(11) DEFAULT NULL,
   `Description` text NOT NULL,
-  `DateAds` date NOT NULL
+  `DateAds` date NOT NULL,
+  `DescriptionFull` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -48,7 +49,7 @@ CREATE TABLE `Chomeur` (
   `IdChomeur` int(11) NOT NULL,
   `mail` text NOT NULL,
   `lieu` text NOT NULL,
-  `IdConv` int(11) NOT NULL,
+  `IdConv` int(11) DEFAULT NULL,
   `description` text NOT NULL,
   `psw` text NOT NULL,
   `nom` text NOT NULL,
@@ -56,10 +57,17 @@ CREATE TABLE `Chomeur` (
   `experiencePro` text NOT NULL,
   `projet` text NOT NULL,
   `competences` text NOT NULL,
-  `telephone` int(11) NOT NULL,
+  `telephone` int(11) DEFAULT NULL,
   `formation` text NOT NULL,
   `centreInteret` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `Chomeur`
+--
+
+INSERT INTO `Chomeur` (`IdChomeur`, `mail`, `lieu`, `IdConv`, `description`, `psw`, `nom`, `prenom`, `experiencePro`, `projet`, `competences`, `telephone`, `formation`, `centreInteret`) VALUES
+(1, '', '', NULL, '', '', 'Boutonton', 'Billy', '', '', '', NULL, '', '');
 
 -- --------------------------------------------------------
 
@@ -70,11 +78,11 @@ CREATE TABLE `Chomeur` (
 CREATE TABLE `Company` (
   `IdCompany` int(11) NOT NULL,
   `Name` text NOT NULL,
-  `IdAds` int(11) NOT NULL,
+  `IdAds` int(11) DEFAULT NULL,
   `Employeurs` text NOT NULL,
-  `IdConv` int(11) NOT NULL,
-  `Lieux` int(11) NOT NULL,
-  `Description` int(11) NOT NULL,
+  `IdConv` int(11) DEFAULT NULL,
+  `Lieux` text NOT NULL,
+  `Description` text NOT NULL,
   `SuperU` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,8 +95,8 @@ CREATE TABLE `Company` (
 CREATE TABLE `Professionnel` (
   `IdPro` int(11) NOT NULL,
   `mail` text NOT NULL,
-  `IdCompany` int(11) NOT NULL,
-  `Conv` int(11) NOT NULL,
+  `IdCompany` int(11) DEFAULT NULL,
+  `IdConv` int(11) DEFAULT NULL,
   `psw` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL
@@ -136,7 +144,7 @@ ALTER TABLE `Ads`
 -- AUTO_INCREMENT pour la table `Chomeur`
 --
 ALTER TABLE `Chomeur`
-  MODIFY `IdChomeur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdChomeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `Company`
