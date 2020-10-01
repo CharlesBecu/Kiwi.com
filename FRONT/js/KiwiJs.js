@@ -64,5 +64,42 @@ function signin(mail, pass) {
     //Function
     return 0;
 }
+var lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed amet nisi alias inventore rerum expedita laudantium explicabo nulla aut, illo itaque cumque nobis nemo accusantium beatae voluptatibus, fugit repudiandae hic.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed amet nisi ";
 
+function jobAd(id = '0',
+    titre = "Dévelopeur Front-end Angular",
+    entreprise = "Alphabet",
+    lieu = "Nice, France",
+    primaryTag = [],
+    secondaryTag = [],
+    salaire = "25k€ - 30k€ par an",
+    preview = lorem) {
+
+    /// 
+    /// 
+    /// Ajouter tags en fonction du nombre de tags de chaque type.
+    /// 
+    /// 
+    return `
+    <article class='jobAd' data-id="${id}">
+        <div class='jobAdCorpse'>
+            <div class='jobAdTitle'>
+                <h4>${titre}</h4>
+                <h5>@ ${entreprise}, ${lieu}</h5>
+            </div>
+            <div class='jobAdSubTitle'>
+                <h5>
+                    <a href="#" class="badge badge-primary">Angular</a>
+                    <a href="#" class="badge badge-secondary">Bootstrap</a>
+                </h5>
+                <h5>${salaire}</h5>
+            </div>
+            <div class='jobAdPreview'>
+                <p>${preview}</p>
+            </div>
+        </div>
+        <img alt="" src="../Img/look.png" class="jobAdMore" />
+    </article>
+    `;
+}
 globalThis.spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';

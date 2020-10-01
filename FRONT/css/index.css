@@ -23,8 +23,9 @@ button:first-of-type {
 }
 
 main {
-    margin-left: 25vw;
-    margin-right: 25vw;
+    /* margin-left: 25vw;
+    margin-right: 25vw; */
+    min-width: 1000px;
     margin-bottom: 10vh;
 }
 

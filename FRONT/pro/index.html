@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='../css/style.css' rel='stylesheet' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
@@ -20,11 +19,30 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+
+    </header>
     <main>
         <h1>Kiwi Pro</h1>
         <h2>Your next collaborator is waiting a few clicks away. Let's find him.</h2>
-        <button type="button">Start now</button> or <button type="button">Log in</button>
+        <div>
+            <button type="button" id="signin">
+                <span>Start now</span>
+                <form class="signin">
+                    <input type="email" id='smail' name='mail' placeholder="Adresse mail" required />
+                    <input type="password" id='spassword' name='password' placeholder="Mot de passe" required />
+                    <input type="image" src="Img/send.png" id='ssubmitLogin' name='submitLogin' />
+                </form>
+            </button> or
+            <button type="button" id="login">
+                <span>Log in</span>
+                <form class="login">
+                    <input type="email" id='lmail' name='mail' placeholder="Adresse mail" required />
+                    <input type="password" id='lpassword' name='password' placeholder="Mot de passe" required />
+                    <input type="image" src="Img/send.png" id='lsubmitLogin' name='submitLogin' />
+                </form>
+            </button>
+        </div>
         <h3>Looking for a job ? Go to <a id="Kiwi" href="../index.html">Kiwi.com</a></h3>
     </main>
     <footer>

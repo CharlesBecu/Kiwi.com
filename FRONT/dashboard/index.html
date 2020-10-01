@@ -23,7 +23,12 @@
 
 <body>
     <header>
-        <h2>Kiwi.com</h2>
+        <h2><a href="../index.html">Kiwi.com</a></h2>
+        <nav>
+            <a class='menu' ref="#">Notifications</a>
+            <a class='menu' href="#">Messaging</a>
+            <a class='menu' href="#">#Profil</a>
+        </nav>
     </header>
     <main>
         <div>
@@ -33,57 +38,33 @@
                     <h4>Emmanuel</h4>
                     <h4>Nuiro</h4>
                 </div>
-                <button type="button">Annonces enregistrées<img src="../Img/star.png" /></button>
-                <button type="button">Entreprises suivies<img src="../Img/star.png" /></button>
+                <button class="dash-asi-btn" type="button">Saved Ads<img src="../Img/star.png" /></button>
+                <button class="dash-asi-btn" type="button">Followed companies<img src="../Img/star.png" /></button>
             </aside>
-            <aside></aside>
+            <aside class="dash-notif">
+                <h4 class="dash-notif-title">
+                    <span>Notifications
+                        <span class="badge badge-pill badge-primary">6</span>
+                    </span>
+                    <a href="#" class="dash-notif-title">see
+                        all</a></h4>
+                <a href="#" class="dash-asi-btn">Alphabet is looking for a new collaborator.</a>
+                <a href="#" class="dash-asi-btn">25 new jobs for "Angular"</a>
+                <a href="#" class="dash-asi-btn">Incoming message from Alphabet</a>
+                <a href="#" class="dash-asi-btn">42 new jobs for "Front-End"</a>
+                <a href="#" class="dash-asi-btn">Amazon is looking for a new collaborator.</a>
+                <a href="#" class="dash-asi-btn">5 new jobs for "Cybersecurity"</a>
+            </aside>
         </div>
         <div>
-            <div class="noDivVisible">.</div>
-            <article class='jobAd'>
-                <div class='jobAdCorpse'>
-                    <div class='jobAdTitle'>
-                        <h4>Dévelopeur Front-end Angular</h4>
-                        <h5>@ Alphabet, Nice, France</h5>
-                    </div>
-                    <div class='jobAdSubTitle'>
-                        <h5>
-                            <a href="#" class="badge badge-primary">Angular</a>
-                            <a href="#" class="badge badge-secondary">Bootstrap</a>
-                        </h5>
-                        <h5>25k€ - 30k€ par an</h5>
-                    </div>
-                    <div class='jobAdPreview'>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed amet nisi alias inventore rerum expedita laudantium explicabo nulla aut, illo itaque cumque nobis nemo accusantium beatae voluptatibus, fugit repudiandae hic.Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Sed amet nisi </p>
-                    </div>
-                </div>
-                <img alt="" src="../Img/look.png" class="jobAdMore" />
-            </article>
-            <article class='jobAd'>
-                <div class='jobAdCorpse'>
-                    <div class='jobAdTitle'>
-                        <h4>Dévelopeur Front-end Angular</h4>
-                        <h5>@ Alphabet, Nice, France</h5>
-                    </div>
-                    <div class='jobAdSubTitle'>
-                        <h5>
-                            <a href="#" class="badge badge-primary">Angular</a>
-                            <a href="#" class="badge badge-secondary">Bootstrap</a>
-                        </h5>
-                        <h5>25k€ - 30k€ par an</h5>
-                    </div>
-                    <div class='jobAdPreview'>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed amet nisi alias inventore rerum expedita laudantium explicabo nulla aut, illo itaque cumque nobis nemo accusantium beatae voluptatibus, fugit repudiandae hic.Lorem ipsum
-                            dolor sit amet consectetur adipisicing elit. Sed amet nisi </p>
-                    </div>
-                </div>
-                <img alt="" src="../Img/look.png" class="jobAdMore" />
-            </article>
-            <div class='search'>
-                <input type="search" placeholder="Work as developper, marketer, designer..." />
-                <img alt="" src="../Img/at.png" /><input type="search" placeholder="Paris, London, Amazon, Renault..." /><input type="image" src="../Img/magnifying-glass.png" />
+            <div class="loading"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </div>
+            <form class='search' id='search'>
+                <input type="search" name='search-A' id='search-A' placeholder="Work as developper, marketer, designer..." />
+                <img alt="" src="../Img/at.png" />
+                <input type="search" name='search-B' id='search-B' placeholder="Paris, London, Amazon, Renault..." />
+                <input type="image" src="../Img/magnifying-glass.png" />
+            </form>
         </div>
     </main>
 </body>

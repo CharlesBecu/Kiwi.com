@@ -7,11 +7,12 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    padding: 8px 48px 8px;
     padding-left: 24px;
 }
 
 body {
-    align-items: center;
     background: #def8ff;
     justify-content: flex-start;
     overflow-y: scroll;
@@ -68,9 +69,8 @@ main>div:last-of-type {
     justify-content: flex-end;
 }
 
-.noDivVisible {
-    margin-top: 120px;
-    color: transparent;
+.loading {
+    margin: 120px 0;
 }
 
 h4,
@@ -153,7 +153,18 @@ h5:not(:first-child) {
     align-self: stretch;
     border-radius: 8px;
     background-color: rgba(44, 97, 102, 0.1);
-    padding: 8px;
+    padding: 16px;
+    opacity: 0;
+}
+
+.jobAd:hover .jobAdMore {
+    opacity: 1;
+    transition-duration: 0.4;
+}
+
+.jobAd:hover .jobAdMore:hover {
+    border: 3px solid #2c6166;
+    background: none;
 }
 
 .jobAdCorpse {
@@ -189,7 +200,7 @@ h5:not(:first-child) {
     object-fit: cover;
 }
 
-.profil-block button {
+.dash-asi-btn {
     width: 100%;
     padding: 8px;
     display: flex;
@@ -198,15 +209,19 @@ h5:not(:first-child) {
     align-items: center;
     background: none;
     border: none;
-    color: #2c6166;
     font-size: 16pt;
+    color: #2c6166;
 }
 
-.profil-block button:hover {
+.badge:visited {
+    color: white;
+}
+
+.dash-asi-btn:hover {
     background-color: #def8ff;
 }
 
-.profil-block button img {
+.dash-asi-btn img {
     height: 30px;
 }
 
@@ -214,8 +229,42 @@ h5:not(:first-child) {
     margin: 8px 0 16px;
 }
 
-h1 {
-    font-size: 48pt;
+h2 a,
+h2 a:visited {
+    color: white;
+    font-weight: 700;
+}
+
+h2 a:hover {
+    text-decoration: none;
+}
+
+.dash-notif-title {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+a.dash-notif-title,
+a.dash-notif-title:hover,
+a.dash-notif-title:visited {
+    color: #2c6166;
+    font-size: 16pt;
+    text-transform: lowercase;
+}
+
+.dash-asi-btn:visited,
+.dash-asi-btn:hover {
+    color: #2c6166;
+    text-decoration: none;
+}
+
+.badge-pill {
+    background-color: #2c6166;
+    padding: .18em .4em;
+    margin-left: 8px;
 }
 
 @media screen and (max-width: 1500px) {
