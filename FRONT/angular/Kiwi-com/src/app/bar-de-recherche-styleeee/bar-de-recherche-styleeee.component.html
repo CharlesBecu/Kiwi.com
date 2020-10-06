@@ -1,0 +1,6 @@
+<form class='search' id='search' appSearchJob (submit)='$event.preventDefault();submitForm()'>
+    <input type="search" name='search-A' id='search-A' #sa (input)='inputA(sa.value)' placeholder="Work as developper, marketer, designer..." />
+    <img alt="" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/at.png" />
+    <input type="search" name='search-B' id='search-B' #sb (input)='inputB(sb.value)' placeholder="Paris, London, Amazon, Renault..." />
+    <input type="image" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/magnifying-glass.png" />
+</form>

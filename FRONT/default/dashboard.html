@@ -15,12 +15,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
-    <link href='css/style.css' rel='stylesheet' />
-    <link href='css/dashboard.css' rel='stylesheet' />
-    <script src="js/KiwiJs.js"></script>
-    <script src="js/dashboard.js"></script>
-    <style id="style"></style>
-    <title>Kiwi - Notifications</title>
+    <link href='https://emmanuel.nuiro.me/kiwi/FRONT/css/style.css' rel='stylesheet' />
+    <link href='https://emmanuel.nuiro.me/kiwi/FRONT/css/dashboard.css' rel='stylesheet' />
+    <script src="https://emmanuel.nuiro.me/kiwi/FRONT/js/KiwiJs.js"></script>
+    <script src="https://emmanuel.nuiro.me/kiwi/FRONT/js/dashboard.js"></script>
+    <style id="style">
+        .jobAdMore {}
+        
+        .jobAdSelected {}
+        
+        .jobAdSelected>* {}
+    </style>
+    <title>Kiwi - Dashboard</title>
 </head>
 
 <body>
@@ -29,9 +35,10 @@
         <nav>
             <!-- <a class='menu' href="#">Notifications</a>
             <a class='menu' href="#">Messaging</a> -->
-            <img src="Img/bell.png" alt="" class="menu bell btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="notifications" />
-            <!-- <img src="Img/user.png" alt="" class="menu profil-picture" /> -->
-            <img src="Img/user.png" alt="" class="menu profil-picture btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-title="<a href='lol'>My Profile</a>" data-footer="<a href='lol'>Log out</a>" data-content="
+            <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/bell.png" alt="" class="menu bell btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="notifications" />
+            <!-- <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/user.png" alt="" class="menu profil-picture" /> -->
+            <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/user.png" alt="" class="menu profil-picture btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-title="<a href='lol'>My Profile</a>" data-footer="<a href='lol'>Log out</a>"
+                data-content="
             <a href='lol'>Notifications</a>
             <a href='lol'>Mail</a>
             <a href='lol'>Settings</a>
@@ -39,23 +46,24 @@
         </nav>
     </header>
     <main>
-        <div class='notification'></div>
-        <!-- <div>
+        <div>
             <aside class="profil-block">
-                <img src="Img/user.png" alt="" class="profil-picture" />
+                <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/user.png" alt="" class="profil-picture" />
                 <div>
                     <h4>Emmanuel</h4>
                     <h4>Nuiro</h4>
                 </div>
-                <button class="dash-asi-btn" type="button">Saved Ads<img src="Img/star.png" /></button>
-                <button class="dash-asi-btn" type="button">Followed companies<img src="Img/star.png" /></button>
+                <button class="dash-asi-btn" type="button">Saved Ads<img
+                        src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/star.png" /></button>
+                <button class="dash-asi-btn" type="button">Followed companies<img
+                        src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/star.png" /></button>
             </aside>
             <aside class="dash-notif">
                 <h4 class="dash-notif-title">
                     <span>Notifications
                         <span class="badge badge-pill badge-primary">6</span>
                     </span>
-                    <a href="#" class="dash-notif-title">see
+                    <a href="#" id="talk" class="dash-notif-title">see
                         all</a></h4>
                 <a href="#" class="dash-asi-btn">Alphabet is looking for a new collaborator.</a>
                 <a href="#" class="dash-asi-btn">25 new jobs for "Angular"</a>
@@ -69,12 +77,12 @@
             <div class="loading"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </div>
             <form class='search' id='search'>
-                <input type="search" name='search-A' id='search-A' placeholder="Work as developper, marketer, designer..." />
-                <img alt="" src="Img/at.png" />
-                <input type="search" name='search-B' id='search-B' placeholder="Paris, London, Amazon, Renault..." />
-                <input type="image" src="Img/magnifying-glass.png" />
+                <input type="search" name='search-A' id='search-A' placeholder="Work as developper, marketer, designerhttps://emmanuel.nuiro.me/kiwi/FRONT." />
+                <img alt="" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/at.png" />
+                <input type="search" name='search-B' id='search-B' placeholder="Paris, London, Amazon, Renaulthttps://emmanuel.nuiro.me/kiwi/FRONT." />
+                <input type="image" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/magnifying-glass.png" />
             </form>
-        </div> -->
+        </div>
     </main>
 </body>
 

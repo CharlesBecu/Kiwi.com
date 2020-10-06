@@ -15,6 +15,7 @@ body {
     height: 100vh;
     overflow: hidden;
     align-items: center;
+    /* clip-path: url('../Img/KiwiBg.svg#clip') */
 }
 
 * {

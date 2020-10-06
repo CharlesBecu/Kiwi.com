@@ -1,0 +1,57 @@
+.jobAdMore {
+    width: 70px;
+    object-fit: contain;
+    justify-self: center;
+    object-position: center;
+    align-self: stretch;
+    border-radius: 8px;
+    padding: 16px;
+    opacity: 0;
+}
+
+.jobAddFull:hover .jobAdMore {
+    opacity: 0;
+    transition-duration: 0.4;
+}
+
+.jobAddFull:hover .jobAdMore:hover {
+    opacity: 1;
+}
+
+.jobAdCorpse {
+    padding-left: 16px;
+}
+
+.jobAdSubTitle {
+    display: flex;
+    align-items: center;
+}
+
+.jobAdPreview p {
+    display: -webkit-box;
+    word-break: break-word;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    font-size: 14pt;
+    margin: 8px 0 0;
+}
+
+h4,
+h5 {
+    display: inline;
+}
+
+h5 {
+    font-weight: 600;
+}
+
+
+/* .jobAdSubTitle h5 {
+    margin: 0;
+} */
+
+h4:not(:first-child),
+h5:not(:first-child),
+.badge:not(:first-child) {
+    margin-left: 8px;
+}

@@ -57,7 +57,7 @@ function session(a, b) {
 
 function connect(mail, pass) {
     //Function
-    return 'dashboard/index.html';
+    return 'dashboard.html';
 }
 
 function signin(mail, pass) {
@@ -98,8 +98,132 @@ function jobAd(id = '0',
                 <p>${preview}</p>
             </div>
         </div>
-        <img alt="" src="../Img/look.png" class="jobAdMore" />
+        <img alt="" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/look.png" class="jobAdMore" />
     </article>
     `;
 }
+
+function setJobAdMoreClick(sheet) {
+    $(".jobAdMore").off('click');
+    $(".jobAdMore").click(function() {
+        changeCSS(".jobAdMore", "height", getComputedStyle(this).height, sheet);
+        changeCSS(".jobAdMore", "align-self", 'start', sheet);
+        if ($(this).parent().hasClass("jobAddFull")) {
+            $(".jobAd").removeClass("jobAddFull");
+            $('.jobAdSelected .jobAdPreview p').html(getPreview());
+            $(this).parent().removeClass("jobAdSelected");
+        } else {
+            $(".jobAd").removeClass("jobAddFull");
+            $('.jobAdSelected .jobAdPreview p').html(getPreview());
+            $(".jobAd").removeClass("jobAdSelected");
+            let all = getComputedStyle(this).height;
+            // changeCSS(".jobAdSelected", "height", all, sheet);
+            changeCSS(".jobAdSelected > *", "align-self", 'start', sheet);
+            $(this).parent().addClass("jobAdSelected", function() {
+                $('.jobAdSelected .jobAdPreview p').html(spinner);
+                // let p = getComputedStyle(document.querySelector('.jobAdSelected .jobAdPreview p')).height;
+                // changeCSS(".jobAddFull .jobAdPreview p", "height", `calc(80vh - ${all} + ${p})`);
+                // changeCSS(".jobAddFull .jobAdPreview p", "transition-duration", '9s');
+                setTimeout(() => $(this).addClass("jobAddFull"), 10);
+                setTimeout(() => $('.jobAddFull .jobAdPreview p').html(getDescription()), 20);
+            });
+        }
+    });
+}
 globalThis.spinner = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+function getDescription() {
+    return `
+
+    $(".jobAdMore").click(function() {
+        changeCSS(".jobAdMore", "height", getComputedStyle(this).height);
+        changeCSS(".jobAdMore", "align-self", 'start');
+        if ($(this).parent().hasClass("jobAddFull")) {
+            $(".jobAd").removeClass("jobAddFull");
+            $('.jobAddFull .jobAdPreview p').html = getPreview();
+            $(this).parent().removeClass("jobAdSelected");
+        } else {
+            $(".jobAd").removeClass("jobAddFull");
+            let all = getComputedStyle(this).height;
+            changeCSS(".jobAdSelected", "height", all);
+            $(this).parent().addClass("jobAdSelected", function() {
+                $('.jobAdSelected .jobAdPreview p').html(spinner);
+                let p = getComputedStyle(document.querySelector('.jobAdSelected .jobAdPreview p')).height;
+                changeCSS(".jobAddFull .jobAdPreview p", "height", 2
+     );
+changeCSS(".jobAddFull .jobAdPreview p", "transition-duration", '9s');
+setTimeout(() => $(this).addClass("jobAddFull"), 10);
+setTimeout(() => $('.jobAddFull .jobAdPreview p').html(getDescription()), 1200);
+});
+}
+`
+}
+
+function getPreview() {
+    return lorem;
+}
+
+function refresh() {
+    test();
+    setJobAdMoreClick(4);
+}
+
+function changeCSS(typeAndClass, newRule, newValue, sheet) {
+    var thisCSS = document.styleSheets[document.styleSheets.length - 1];
+    var ruleSearch = thisCSS.cssRules ? thisCSS.cssRules : thisCSS.rules
+    for (i = 0; i < ruleSearch.length; i++) {
+        if (ruleSearch[i].selectorText == typeAndClass) {
+            var target = ruleSearch[i]
+            break;
+        }
+    }
+    target.style[newRule] = newValue;
+}
+
+function spinnRefresh(sheet, verif = () => true) {
+    gsap.to(".spinner-border", {
+        onComplete: function() {
+            refresh();
+            // setJobAdMoreClick(sheet);
+            this.kill();
+            if (verif()) {
+                spinnRefresh(sheet, verif);
+            }
+        },
+        scrollTrigger: {
+            trigger: "main",
+            start: "bottom bottom", // the default values
+            end: "bottom bottom",
+        },
+    });
+}
+
+function searchForAd(a, b) {
+
+}
+
+function headerPopover() {
+    $("img.menu.profil-picture").popover({
+        trigger: 'click',
+        placement: $("img.menu.profil-picture").attr('data-placement'),
+        html: true,
+        template: ` <div class="popover">
+                        <div class="popover-title">${$("img.menu.profil-picture").attr('data-title')}</div>
+                        <div class="popover-content">${$("img.menu.profil-picture").attr('data-content')}</div>
+                        <div class="popover-footer">${$("img.menu.profil-picture").attr('data-footer')}</div>
+                    </div>`
+    }).on('show.bs.popover', function() {
+        $("[data-toggle=popover]").not(this).popover('hide');
+    });
+    $("img.menu.bell").popover({
+        trigger: 'click',
+        placement: $("img.menu.profil-picture").attr('data-placement'),
+        html: true,
+        template: ` <div class="popover">
+                        <div class="popover-title">No notifications for now</div>
+                        <div class="popover-content">Incoming notifications will be displayed here.</div>
+                    </div>`
+    }).on('show.bs.popover', function() {
+        $("[data-toggle=popover]").not(this).popover('hide');
+    });
+}

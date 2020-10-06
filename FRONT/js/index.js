@@ -50,5 +50,5 @@ $(function() {
             bsAlert(`We couldn't identify you with this login/password. If you forgot your password you can <a href="reset.php" class="alert-link">reset it here</a>. If you haven't signed in yet, please click on 'Start now'.`);
         }
     });
-    bsAlert(`Test mode. Login always succeeds and sign in aways failS.`);
+    setTimeout(() => bsAlert(`Test mode. Login always succeeds and sign in aways failS.`), 2000);
 });

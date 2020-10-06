@@ -1,3 +1,10 @@
+body {
+    background: url('../Img/Kiwi-bg-4.png');
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+}
+
 button {
     padding: 8px 32px;
     background-color: transparent;
@@ -26,6 +33,7 @@ main {
     /* margin-left: 25vw;
     margin-right: 25vw; */
     min-width: 1000px;
+    width: 50vw;
     margin-bottom: 10vh;
 }
 

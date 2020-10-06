@@ -1,0 +1,11 @@
+<app-bar-de-recherche-styleeee (submiT)="onsubmiT($event)"></app-bar-de-recherche-styleeee>
+<app-job-ad *ngFor="let ad of ads" [titre]="ad.titre" [entreprise]="ad.entreprise" [lieu]="ad.lieu" [salaire]="ad.salaire" [preview]="ad.preview" [id]="ad.id"></app-job-ad>
+<div class="loading"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</div>
+<style id="style">
+    .jobAdMore {}
+    
+    .jobAdSelected {}
+    
+    .jobAdSelected>* {}
+</style>
