@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document sans nom</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>HTTP REQUEST TESTER</h1>
+    </header>
+    <input type="url" id="url" class="form-control" placeholder="Request url" />
+    <select id='method' class="custom-select custom-select-lg mb-3">
+        <option value="POST" selected>POST</option>
+        <option value="GET">GET</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+        <option value="OPTIONS">OPTIONS</option>
+    </select>
+    <textarea id='header' class="form-control" placeholder=" Request header. Ex: Content-Type:Application/json; Accept:*/*; "></textarea>
+    <textarea id='data' class="form-control" placeholder="Request data. Pay attention to format data accordin to the content-type of the request body."></textarea>
+    <button type="button" class="btn btn-danger">Send</button>
+    <p class='status '></p>
+    <p class='header '></p>
+    <p class='data '></p>
+</body>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(10, 10vw);
+        grid-template-rows: repeat(10, 10vh);
+        overflow: hidden;
+    }
+    
+    header {
+        grid-column: 1/11;
+        grid-row: 1/2;
+        background-color: #dc3545;
+        color: white;
+        padding: 8px 60px;
+        display: flex;
+        align-items: center;
+    }
+    
+    body>*:not(header),
+    .custom-select.custom-select-lg.mb-3,
+    .form-control {
+        border: 2px solid #dc3545;
+        border-radius: 10px;
+        margin: 0 !important;
+        font-size: 1.2vw;
+        padding: 8px
+    }
+    
+    textarea {
+        padding: 16px;
+    }
+    
+    p.data {
+        overflow: scroll;
+        font-size: 0.8vw;
+    }
+    
+    input.form-control {
+        grid-column: 3/6;
+        grid-row: 3/4;
+        height: 6vh;
+        align-self: center;
+    }
+    
+    .btn.btn-danger {
+        grid-column: 2/6;
+        grid-row: 9/10;
+        align-self: end;
+        height: 8vh;
+        border-radius: 10px;
+        font-size: 1.5vw;
+    }
+    
+    .custom-select.custom-select-lg.mb-3 {
+        grid-column: 2/3;
+        grid-row: 3/4;
+        height: 6vh;
+        align-self: center;
+        width: 9vw;
+    }
+    
+    #header.form-control {
+        grid-column: 2/6;
+        grid-row: 4/5;
+        height: 10vh;
+    }
+    
+    #data.form-control {
+        grid-column: 2/6;
+        grid-row: 5/9;
+        height: 39vh;
+        align-self: end;
+    }
+    
+    .status {
+        grid-column: 7/10;
+        grid-row: 3/4;
+        height: 6vh;
+        align-self: center;
+    }
+    
+    .header {
+        grid-column: 7/10;
+        grid-row: 4/6;
+        height: 19vh;
+    }
+    
+    .data {
+        grid-column: 7/10;
+        grid-row: 6/10;
+    }
+</style>
+<script type="application/javascript">
+    $(function() {
+        $('button').click(function() {
+            let headers = $('#header').val().trim() ? $('#header').val().split(';') : [];
+            let request;
+            let URL = $('#url').val();
+            let meth = $('#method').val();
+            let body = $('#data').val();
+            console.log(headers, URL, meth, body);
+            if (meth == 'GET') {
+                request = $.ajax({
+                    url: URL,
+                    crossDomain: true,
+                    beforeSend: function(a) {
+                        headers.forEach(el => {
+                            let t = el.trim().split(':');
+                            a.setRequestHeader(t[0].trim(), t[1].trim());
+                        });
+                    },
+                    method: "GET",
+                });
+            } else {
+                request = $.ajax({
+                    url: URL,
+                    crossDomain: true,
+                    beforeSend: function(a) {
+                        headers.forEach(el => {
+                            let t = el.trim().split(':');
+                            a.setRequestHeader(t[0].trim(), t[1].trim());
+                        });
+                    },
+                    method: meth,
+                    data: body,
+                });
+            }
+
+            request.done(function(msg, b, c = 'noparams') {
+                let resp = JSON.stringify(msg).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ");
+                // var w = window.open('about:blank');
+                // w.document.open();
+                // w.document.write(resp);
+                // w.document.close();
+                $('.status')[0].innerHTML = c.status + ' ' + c.statusText;
+                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ").replace(/\\r/g, ";").replace(/\\n/g, "");
+
+                $(".data")[0].innerHTML = resp;
+            });
+
+            request.fail(function(c, textStatus) {
+                console.log(c, c.responseJSON, c.responseText);
+                let resp = JSON.stringify(c.responseJSON).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ");
+                $('.status')[0].innerHTML = c.status + ' ' + c.statusText;
+                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ").replace(/\\r/g, ";").replace(/\\n/g, "");
+                $(".data")[0].innerHTML = resp;
+            });
+
+            //request.always((resp) => console.log(JSON.stringify(resp, null, 2)));
+        });
+    });
+</script>
+
+</html>
