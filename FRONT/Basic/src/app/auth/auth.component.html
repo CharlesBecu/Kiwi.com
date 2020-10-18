@@ -1,0 +1,91 @@
+<div></div>
+<main id='auth' #auth>
+    <h1>Kiwi.com</h1>
+    <h2>Be kiwi, be wealthy, find your dream's job here.</h2>
+    <div>
+        <button type="button" id="signin" (click)="open(s)" #s>
+            <span>Start now</span>
+            <form class="signin">
+                <input type="email" id='smail' name='mail' placeholder="Adresse mail" #sm (input)="check(sm.value,5)" [ngClass]="validator[5] === false ? ['invalid'] : []"/>
+                <!-- <input type="text" id='spassword' name='password' placeholder="Mot de passe" #sp (input)="check(sp.value,6)" [ngClass]="validator[6] === false ? ['invalid'] : []"/> -->
+                <input type="image" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/send.png" id='ssubmitLogin' (click)='preSign($event)' name='submitLogin'/>
+            </form>
+        </button> or
+        <button type="button" id="login" (click)="open(l)" #l>
+            <span>Log in</span>
+            <form class="login" (submit)="$event.preventDefault()">
+                <input type="email" id='lmail' name='mail' placeholder="Adresse mail" #lm (input)="check(lm.value,7)" [ngClass]="validator[7] === false ? ['invalid'] : []"/>
+                <input type="password" id='lpassword' name='password' placeholder="Mot de passe" #lp (input)="check(lp.value,8)" [ngClass]="validator[8] === false ? ['invalid'] : []"/>
+                <input [ngClass]="loadLog ? ['spinner-border','spinner-border-sm'] : []" type="image" [src]="!loadLog ? 'https://emmanuel.nuiro.me/kiwi/FRONT/Img/send.png' : 'https://emmanuel.nuiro.me/kiwi/FRONT/Img/loading-circle.png'" role="status" ariaHidden="true" id='lsubmitLogin' (click)='logIn($event,lm.value,lp.value)' name='submitLogin'/>
+                <!-- <span *ngIf="loadLog" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+            </form>
+        </button>
+    </div>
+    <h3>Part of an organization ? Go to <a id="Kiwi" href="https://emmanuel.nuiro.me/kiwi/FRONT/pro/index.html">Kiwi Pro</a></h3>
+</main>
+<footer>
+    <a href="">Kiwi.com</a>
+    <a href="">Kiwi Pro</a>
+    <a href="">CGV</a>
+    <a href="">About us</a>
+    <a href="">Jobs at Kiwi</a>
+    <a href="">FAQ</a>
+    <a href="">Contact</a>
+</footer>
+
+<div class="modal sign fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Sign in</h4>
+            </div>
+            <div class="modal-body" [ngClass]="posted === true ? ['hidden'] : []">
+                <form (submit)="$event.preventDefault()">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" #n (input)="check(n.value,0)" [ngClass]="validator[0] === false ? ['invalid'] : []" />
+                        <span class='form-field-explain'>Invalid entry</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" class="form-control" #f (input)="check(f.value,1)" [ngClass]="validator[1] === false ? ['invalid'] : []" />
+                        <span class='form-field-explain'>Invalid entry</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth">Date of birth</label>
+                        <input type="date" id="birth" class="form-control" #b (input)="check(b.value,2)" [ngClass]="validator[2] === false ? ['invalid'] : []" />
+                        <span class='form-field-explain'>Invalid entry</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" class="form-control" #e (input)="check(e.value,3)" [ngClass]="validator[3] === false ? ['invalid'] : []" />
+                        <span class='form-field-explain'>Invalid entry</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" id="password" class="form-control" #p (input)="check(p.value,4)" [ngClass]="validator[4] === false ? ['invalid'] : []" />
+                        <span class='form-field-explain'>Must contain at least 1 lowercase and 1 uppercase character, 1 number, 1 special character (such as !@#$%^&*) and be longer than 7 character</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body" [ngClass]="posted === false ? ['hidden'] : []">
+                Your account has been validated. Now check your email adress for the validation link. If you don't see the mail, it may be in your spam.
+            </div>
+            <div class="modal-footer" [ngClass]="posted === true ? ['hidden'] : []">
+                <button type="button" class="btn btn-secondary"><span id="bs-Modal-Custom-Fail-Btn" (click)='goToLog(l)'>I have an account</span></button>
+                <button type="button" class="btn btn-primary bs-Modal-Custom-Success-Btn" (click)='signBox(
+                    $event,
+                    {
+                        name: n.value,
+                        firstName: f.value,
+                        birth: b.value,
+                        mail: e.value,
+                        password: p.value
+                    })'>
+                    <span *ngIf="loadSign" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span *ngIf="!loadSign">Signin</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

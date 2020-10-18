@@ -1,0 +1,27 @@
+app-job-ad {
+    background-color: white;
+    width: 100%;
+    border-radius: 15px;
+    /* border: 2px solid #2c6166; */
+    margin-top: 24px;
+    min-height: 200px;
+    padding: 16px;
+    box-shadow: 5px 5px 10px #a2b5ba, -5px -5px 10px #fff;
+    display: grid;
+    grid-template-columns: 28fr 2fr;
+    grid-column-gap: 16px;
+    align-items: center;
+}
+
+.loading {
+    margin: 120px 0;
+    cursor: pointer;
+    font-size: 14pt;
+    text-align: center
+}
+
+app-bar-de-recherche-styleeee {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 32px;
+}

@@ -1,0 +1,18 @@
+<div class='jobAdCorpse'>
+    <div class='jobAdTitle'>
+        <h4>{{titre}}</h4>
+        <h5>@ {{entreprise}}, {{lieu}}</h5>
+    </div>
+    <div class='jobAdSubTitle'>
+        <h5>
+            <a href="#" class="badge badge-primary">{{ type}}</a>
+            <a href="#" class="badge badge-secondary">{{ tags[0] }}</a>
+        </h5>
+        <h5>{{salaire}}</h5>
+    </div>
+    <div class='jobAdPreview'>
+        <p>{{ display }}</p>
+    </div>
+</div>
+<img alt="" [src]="!state ? 'https://emmanuel.nuiro.me/kiwi/FRONT/Img/look.png' : 'https://emmanuel.nuiro.me/kiwi/FRONT/Img/visibility.png'" [ngClass]="{'jobAdOpened': state, 'jobAdMore':true}" (click)="toggleDisplay()" />
+<a [ngClass]="{'jobAdOpened': state, 'jobAdFull':true}" [routerLink]="['/ads/'+id]"><img alt="" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/right-arrow-in-a-circle.png" /></a>

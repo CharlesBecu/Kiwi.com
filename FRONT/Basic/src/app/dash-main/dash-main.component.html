@@ -1,0 +1,7 @@
+<app-bar-de-recherche-styleeee (submiT)="onsubmiT($event)"></app-bar-de-recherche-styleeee>
+
+<app-job-ad *ngFor="let ad of ads" (openAd)="open($event)" [main]='main' [titre]="ad.title" [entreprise]="ad.getCompany()" [lieu]="ad.location" [salaire]="ad.salary" [preview]="ad.preview" [type]="ad.type" [tags]='ad.tags' [id]="ad.id"></app-job-ad>
+
+<div *ngIf="ads.length > 0 && more" class="loading" (click)="getMoreAds()"><span [style.color]="loading ? 'transparent' : '#2c6166'">See more offer</span><br><span [style.color]="!loading ? 'transparent' : '#2c6166'" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+</div>
+<div *ngIf="ads.length <= 0">There's no offer for your tag research</div>

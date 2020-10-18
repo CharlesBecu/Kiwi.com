@@ -1,0 +1,9 @@
+<div>
+    <div class='side'>
+        <div class='spec' (click)="history.goToPreviousUrl()">
+            <img alt="" src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/left-arrow.png" /> {{ history.getPreviousUrl().slice(1) || 'Retour' | titlecase }}</div>
+        <app-ad-info></app-ad-info>
+        <app-company-info></app-company-info>
+    </div>
+    <app-full-ad-text [id]="id"></app-full-ad-text>
+</div>

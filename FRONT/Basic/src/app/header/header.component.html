@@ -1,0 +1,49 @@
+<header>
+    <h2><a href="index.html">Kiwi.com</a></h2>
+    <nav>
+        <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/bell.png" alt="" class="menu bell btn btn-secondary" (click)="bell()" />
+        <ng-template #popContent class="popover">
+            <div class="popover-title">
+                <a href='#'>My Profile</a>
+            </div>
+            <div class="popover-main">
+                <a href='#'>Notifications</a>
+                <a href='#'>Mail</a>
+                <a href='#'>Settings</a>
+            </div>
+            <div class="popover-footer">
+                <a routerLink="src/app/auth">Log out</a>
+            </div>
+        </ng-template>
+        <img src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/user.png" alt="" class="menu profil-picture btn btn-secondary" [popover]='popContent' placement="bottom" />
+        <!-- (click)="profilPopover()" -->
+    </nav>
+</header>
+<!-- <script type='text/javascript'>
+    $(function() {
+        console.log('yeah')
+        $("img.menu.profil-picture").popover({
+            trigger: 'click',
+            placement: $("img.menu.profil-picture").attr('data-placement'),
+            html: true,
+            template: ` <div class="popover">
+                        <div class="popover-title">${$("img.menu.profil-picture").attr('data-title')}</div>
+                        <div class="popover-content">${$("img.menu.profil-picture").attr('data-content')}</div>
+                        <div class="popover-footer">${$("img.menu.profil-picture").attr('data-footer')}</div>
+                    </div>`
+        }).on('show.bs.popover', function() {
+            $("[data-toggle=popover]").not(this).popover('hide');
+        });
+        $("img.menu.bell").popover({
+            trigger: 'click',
+            placement: $("img.menu.profil-picture").attr('data-placement'),
+            html: true,
+            template: ` <div class="popover">
+                        <div class="popover-title">No notifications for now</div>
+                        <div class="popover-content">Incoming notifications will be displayed here.</div>
+                    </div>`
+        }).on('show.bs.popover', function() {
+            $("[data-toggle=popover]").not(this).popover('hide');
+        });
+    });
+</script> -->

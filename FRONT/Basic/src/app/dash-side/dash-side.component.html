@@ -1,0 +1,20 @@
+<aside class="profil-block">
+    <img [src]="profil" alt="" class="profil-picture" />
+    <div>
+        <h4>{{ prenom }}</h4>
+        <h4>{{ nom }}</h4>
+    </div>
+    <button class="dash-asi-btn" type="button">Saved Ads<img
+            src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/star.png" /></button>
+    <button class="dash-asi-btn" type="button">Followed companies<img
+            src="https://emmanuel.nuiro.me/kiwi/FRONT/Img/star.png" /></button>
+</aside>
+<aside class="dash-notif">
+    <h4 class="dash-notif-title">
+        <span>Notifications
+            <span class="badge badge-pill badge-primary">{{notifCount}}</span>
+        </span>
+        <a href="#" class="dash-notif-title">see all</a>
+    </h4>
+    <app-dash-side-notif *ngFor="let n of notifs.slice(0, notifs.length > 10 ? 10 : notifs.length)" [content]="n.content" [link]="n.link"></app-dash-side-notif>
+</aside>

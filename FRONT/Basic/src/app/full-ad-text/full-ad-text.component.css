@@ -1,0 +1,10 @@
+.quill {
+    background-color: white;
+    width: 100%;
+    border-radius: 15px;
+    /* border: 2px solid #2c6166; */
+    margin-bottom: 32px;
+    min-height: 95%;
+    padding: 48px;
+    box-shadow: 5px 5px 10px #a2b5ba, -5px -5px 10px #fff;
+}

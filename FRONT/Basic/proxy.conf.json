@@ -1,0 +1,8 @@
+{
+    "http://localhost/rest-api/*": {
+        "target": "http://localhost:8080/rest-api",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
