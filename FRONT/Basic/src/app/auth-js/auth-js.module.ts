@@ -135,25 +135,4 @@ export class AuthJsModule {
 
 
   }
-
-  cookie(a, b): void {
-    localStorage.setItem('mail', a);
-    localStorage.setItem('password', 'b');
-    localStorage.setItem('token', '0');
-  }
-
-  session(a, b): void {
-    sessionStorage.setItem('mail', a);
-    sessionStorage.setItem('password', 'b');
-    sessionStorage.setItem('token', '0');
-  }
-
-  connect(mail, pass): string | number {
-    return 'dashboard';
-  }
-
-  signin(mail, pass): string | number {
-    return 0;
-  }
-
 }

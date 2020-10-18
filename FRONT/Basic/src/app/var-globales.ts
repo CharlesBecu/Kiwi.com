@@ -111,7 +111,7 @@ export class VariablesGlobales {
           this.gotUser.emit(this.user);
         },
         (error) => {
-          const tok = sessionStorage.getItem('token');
+          const tok = localStorage.getItem('token');
           if (tok === null || !bool) {
             this.router.navigate(['auth']);
           }else{

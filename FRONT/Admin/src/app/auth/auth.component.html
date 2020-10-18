@@ -1,0 +1,3 @@
+<input type="email" id='lmail' name='mail' placeholder="Adresse mail" #lm />
+<input type="password" id='lpassword' name='password' placeholder="Mot de passe" #lp />
+<input type="submit" (click)='logIn($event,lm.value,lp.value)' name='submitLogin' />

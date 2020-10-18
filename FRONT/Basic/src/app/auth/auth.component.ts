@@ -75,7 +75,7 @@ export class AuthComponent implements OnInit {
         mail,
         pass,
         (response) => {
-          sessionStorage.setItem('token', response);
+          localStorage.setItem('token', response);
           this.router.navigate([{ outlets: { primary: 'dashboard', h: null } }]);
         },
         (response) => {

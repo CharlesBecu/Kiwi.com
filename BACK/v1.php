@@ -85,6 +85,51 @@ $Routing->addRoute(GET, 'ads', function ($req) {
     }
     answer(200, $adlist);
 });
+$Routing->addRoute(GET, 'admin\/ads', function ($req) {
+    $bdd = connect();
+    $get = $req->body;
+    $page = empty($get['p']) ? 1 : $get['p'];
+    $bdd_reponse = $bdd->query('SELECT `ID`,`START`, `OWNER`, `END`, `TITLE`, `COMPANY`, `LOCATION`, `CONTRACT`, `TAGS`, `SALARY`, `VIEW`, `OPEN`, `APPLICANT`, `CHATS`, `PREVIEW` FROM `JOBAD`' . ' LIMIT ' . ($page - 1) * 20 . ', 20');
+    $adlist = [];
+    while ($data = $bdd_reponse->fetch(PDO::FETCH_ASSOC)) {
+        array_push($adlist, $data);
+    }
+    $bdd_reponse->closeCursor();
+    if (empty($adlist)) {
+        answer(404, '');
+    }
+    answer(200, $adlist);
+});
+$Routing->addRoute(GET, 'admin\/users', function ($req) {
+    $bdd = connect();
+    $get = $req->body;
+    $page = empty($get['p']) ? 1 : $get['p'];
+    $bdd_reponse = $bdd->query('SELECT * FROM `USERS`' . ' LIMIT ' . ($page - 1) * 20 . ', 20');
+    $adlist = [];
+    while ($data = $bdd_reponse->fetch(PDO::FETCH_ASSOC)) {
+        array_push($adlist, $data);
+    }
+    $bdd_reponse->closeCursor();
+    if (empty($adlist)) {
+        answer(404, '');
+    }
+    answer(200, $adlist);
+});
+$Routing->addRoute(GET, 'admin\/company', function ($req) {
+    $bdd = connect();
+    $get = $req->body;
+    $page = empty($get['p']) ? 1 : $get['p'];
+    $bdd_reponse = $bdd->query('SELECT * FROM `COMPANY`' . ' LIMIT ' . ($page - 1) * 20 . ', 20');
+    $adlist = [];
+    while ($data = $bdd_reponse->fetch(PDO::FETCH_ASSOC)) {
+        array_push($adlist, $data);
+    }
+    $bdd_reponse->closeCursor();
+    if (empty($adlist)) {
+        answer(404, '');
+    }
+    answer(200, $adlist);
+});
 $Routing->addRoute(GET, 'ads\/\d+', function ($req) {
     $bdd = connect();
     $get = $req->body;

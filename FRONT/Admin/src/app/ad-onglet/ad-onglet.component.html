@@ -1,0 +1,15 @@
+<div><button type="button" (click)="previous()">Précédent</button> |
+    <span>Page {{ p }}</span> |
+    <button type="button" (click)="next()">Suivant</button></div>
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let c of name">{{c | titlecase}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of ads">
+            <td *ngFor="let b of values(a)" [innerHTML]="b"></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+<div class="bar">
+    <button type="button" (click)="active=1;" [ngClass]="active==1 ? 'active' : ''">ads</button>
+    <button type="button" (click)="active=2;" [ngClass]="active==2 ? 'active' : ''">users</button>
+    <button type="button" (click)="active=3;" [ngClass]="active==3 ? 'active' : ''">company</button>
+    <button type="button" (click)="active=4;" [ngClass]="active==4 ? 'active' : ''">Stats</button>
+</div>
+<div class="content" [ngSwitch]="active">
+    <app-ad-onglet *ngSwitchCase="1" route="ads" [name]="adsFields"></app-ad-onglet>
+    <app-ad-onglet *ngSwitchCase="2" route="users" [name]="usersFields"></app-ad-onglet>
+    <app-ad-onglet *ngSwitchCase="3" route="company" [name]="companyFields"></app-ad-onglet>
+    <div *ngSwitchCase="4">No stats available</div>
+</div>
