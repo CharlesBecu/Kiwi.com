@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Document sans nom</title>
+    <title>HTTP REQUEST TESTER</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -69,7 +69,8 @@
         padding: 16px;
     }
     
-    p.data {
+    p.data,
+    p.header {
         overflow: scroll;
         font-size: 0.8vw;
     }
@@ -116,6 +117,9 @@
         grid-row: 3/4;
         height: 6vh;
         align-self: center;
+        display: flex;
+        align-items: center;
+        color: green;
     }
     
     .header {
@@ -128,6 +132,11 @@
         grid-column: 7/10;
         grid-row: 6/10;
     }
+    
+    .error {
+        font-weight: bold;
+        color: #dc3545;
+    }
 </style>
 <script type="application/javascript">
     $(function() {
@@ -137,7 +146,6 @@
             let URL = $('#url').val();
             let meth = $('#method').val();
             let body = $('#data').val();
-            console.log(headers, URL, meth, body);
             if (meth == 'GET') {
                 request = $.ajax({
                     url: URL,
@@ -172,16 +180,16 @@
                 // w.document.write(resp);
                 // w.document.close();
                 $('.status')[0].innerHTML = c.status + ' ' + c.statusText;
-                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ").replace(/\\r/g, ";").replace(/\\n/g, "");
-
+                $('.status').removeClass('error');
+                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).slice(1, -1).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\\r\\n/g, ";<br>").replace(/:/g, " : ").replace(/^"/, '').replace(/"$/, '');
                 $(".data")[0].innerHTML = resp;
             });
 
             request.fail(function(c, textStatus) {
-                console.log(c, c.responseJSON, c.responseText);
                 let resp = JSON.stringify(c.responseJSON).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ");
                 $('.status')[0].innerHTML = c.status + ' ' + c.statusText;
-                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\{/g, "{<br><ul>").replace(/\}/g, "</ul>}").replace(/,/g, ",<br>").replace(/:/g, " : ").replace(/\\r/g, ";").replace(/\\n/g, "");
+                $('.status').addClass('error');
+                $('.header')[0].innerHTML = JSON.stringify(c.getAllResponseHeaders()).slice(1, -1).replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/\\r\\n/g, ";<br>").replace(/:/g, " : ").replace(/^"/, '').replace(/"$/, '');
                 $(".data")[0].innerHTML = resp;
             });
 
